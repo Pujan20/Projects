@@ -1,0 +1,53 @@
+<h1 align="center">DASHBOARD</h1>
+<form [formGroup]="dashboardForm" (ngSubmit)="onSubmit()" align="center">
+  <div class="form-row">
+
+    <!-- Name -->
+    <mat-form-field>
+      <input matInput formControlName="name" placeholder="Name" />
+    </mat-form-field>
+<br>
+    <!-- Procedure -->
+    <mat-form-field>
+      <mat-label>Procedure</mat-label>
+      <mat-select formControlName="procedure" placeholder="Select Procedure">
+        <mat-option *ngFor="let procedureOption of procedureOptions" [value]="procedureOption.value">
+          {{ procedureOption.viewValue }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+<br>
+    <!-- Procedure By -->
+    <mat-form-field>
+      <mat-label>Procedure By</mat-label>
+      <mat-select formControlName="procedureBy" placeholder="Select Procedure By">
+        <mat-option *ngFor="let procedureByOption of procedureByOptions" [value]="procedureByOption.value">
+          {{ procedureByOption.viewValue }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+<br>
+    <!-- Place -->
+    <mat-form-field>
+      <input matInput formControlName="place" placeholder="Place" />
+    </mat-form-field>
+<br>
+    <!-- Date -->
+    <mat-form-field>
+      <mat-label>Date and Time</mat-label>
+      <input matInput [ngxMatDatetimePicker]="picker" formControlName="dateTime" placeholder="Choose a date and time">
+      <ngx-mat-datepicker-toggle matSuffix [for]="picker"></ngx-mat-datepicker-toggle>
+      <ngx-mat-datetime-picker #picker></ngx-mat-datetime-picker>
+    </mat-form-field>
+   <br> 
+    
+   
+    <!-- Time -->
+  
+
+  </div>
+
+  <!-- Submit and Sign Out Buttons -->
+  <button mat-raised-button color="primary" type="submit">Submit</button>
+  <button mat-button mat-raised-button color="accent" [hidden]="isAuthenticated" (click)="signOut()">Sign Out</button>
+</form>
